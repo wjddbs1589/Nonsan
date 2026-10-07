@@ -69,8 +69,3 @@ HMD 없이 Vive Tracker 총기로 스크린을 조준하는 4인 탑승형 레�
 
 ## 포함하지 않은 의존 코드
 `PlayerData`, `EnemyManager`, `ScoreManager`, `TrailPool`, `PooledBulletTrail`, `IDamageable`, `IEnemy`, `HitSurfaceType`, `SoundClipCollection`, `TrackerInput`, `Lv3HeliTrigger`, SteamVR 플러그인 등
-
-## 알려진 한계 및 개선 방향
-- **패킷 직렬화**: `Marshal` 기반이라 송신마다 임시 비관리 메모리를 할당한다. blittable 구조체이므로 `MemoryMarshal.Write`로 할당 없이 직렬화할 수 있다.
-- **곡률 계산 중복**: `SimulatorUDP`와 `SplineMovement`가 같은 곡률 계산을 각각 수행한다. 공용 유틸로 분리할 수 있다.
-- **고속 미사일 충돌**: 트리거 충돌은 물리 스텝 사이에서 누락될 수 있다. 카메라 근접 판정은 이동 구간 기준으로 보완했다.
